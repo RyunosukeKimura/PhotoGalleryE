@@ -1,4 +1,4 @@
-<!doctype html>
+{% comment %} <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -67,22 +67,29 @@
   </div>
 </header>
 
-<main>
+<main> {% endcomment %}
+  <!-- ここまでのコードをすべて削除-->
 
+  <!-- タイトルとナビゲーションボタン-->
   <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Album example</h1>
-        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+        <!-- タイトルと本文-->
+        <h1 class="fw-light">Photo Gallery</h1>
+        <p class="lead text-muted">
+          コメントを見て写真に描かれた世界に思いを馳せましょう。
+          素敵な写真とコメントをお待ちしています！</p>
         <p>
-          <a href="#" class="btn btn-primary my-2">Main call to action</a>
-          <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+          <!-- ナビゲーションボタン-->
+          <a href="#" class="btn btn-primary my-2">今すぐサインアップ</a>
+          <a href="#" class="btn btn-secondary my-2">登録済みの方はログイン</a>
         </p>
       </div>
     </div>
   </section>
 
-  <div class="album py-5 bg-light">
+  <!-- 以下のコードをすべて削除-->
+  {% comment %} <div class="album py-5 bg-light">
     <div class="container">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -253,4 +260,4 @@
 
       
   </body>
-</html>
+</html> {% endcomment %}
