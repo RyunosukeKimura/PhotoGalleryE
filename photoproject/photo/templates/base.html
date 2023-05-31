@@ -1,19 +1,25 @@
+<!-- 静的ファイルのURLを生成するstaticタグをダウンロードする-->
+{% load static %}
 <!doctype html>
-<html lang="en">
+<!-- 言語設定をenからjaに変更-->
+<html lang="ja">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Album example · Bootstrap v5.0</title>
+    <!-- ヘッダー情報のタイトルを個別に設定できるようにする-->
+    <title>{% block title %}{% endblock %}</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
+    <!-- link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">-->
 
     
 
     <!-- Bootstrap core CSS -->
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap core CSSを読み込むコードをBootstrapからコピー-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">-->
 
     <style>
       .bd-placeholder-img {
@@ -30,9 +36,8 @@
         }
       }
     </style>
-
-    
   </head>
+
   <body>
     
 <header>
@@ -40,15 +45,22 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-8 col-md-7 py-4">
-          <h4 class="text-white">About</h4>
-          <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+          <!-- ヘッダーのタイトルと本文-->
+          <h4 class="text-white">お気に入りを見つけよう</h4>
+          <p class="text-muted">
+            誰でも参加できる写真投稿サイトです。
+            自分で撮影した写真なら何でもオッケー！
+            でも、カテゴリに属する写真に限ります。
+            コメントも付けてください！
+          </p>
         </div>
         <div class="col-sm-4 offset-md-1 py-4">
           <h4 class="text-white">Contact</h4>
+          {% comment %} <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p> {% endcomment %}
           <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Follow on Twitter</a></li>
-            <li><a href="#" class="text-white">Like on Facebook</a></li>
-            <li><a href="#" class="text-white">Email me</a></li>
+            <li><a href="#" class="text-white">サインアップ</a></li>
+            <li><a href="#" class="text-white">ログイン</a></li>
+            <li><a href="mailto:Aoi_Katagiri@totec.co.jp" class="text-white">Email me</a></li>
           </ul>
         </div>
       </div>
@@ -56,9 +68,13 @@
   </div>
   <div class="navbar navbar-dark bg-dark shadow-sm">
     <div class="container">
-      <a href="#" class="navbar-brand d-flex align-items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-        <strong>Album</strong>
+      <!-- トップページへのリンク-->
+      <a href="{% url 'photo:index' %}"
+        class="navbar-brand d-flex align-item-center">
+      {% comment %} <a href="#" class="navbar-brand d-flex align-items-center">{% endcomment %}
+        <svg xmlns="http://www.w3.org/2000/svg"width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <!-- リンクテキスト-->
+        <strong>Photo</strong>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -68,8 +84,10 @@
 </header>
 
 <main>
-
-  <section class="py-5 text-center container">
+  <!-- <main>タグの要素をすべて削除して以下に書き換え-->
+  <!-- メインコンテンツの本体部分は各ページのテンプレートで埋め込む-->
+  {% block contents %}{% endblock %}
+  {% comment %} <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">Album example</h1>
@@ -234,8 +252,7 @@
         </div>
       </div>
     </div>
-  </div>
-
+  </div> {% endcomment %}
 </main>
 
 <footer class="text-muted py-5">
@@ -243,14 +260,13 @@
     <p class="float-end mb-1">
       <a href="#">Back to top</a>
     </p>
-    <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-    <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
+    <p class="mb-1">
+      Photo Gallery is &copy; Bootstrap, but please post a lot!</p>
+    {% comment %} <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p> {% endcomment %}
   </div>
 </footer>
 
-
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-
-      
+    <!-- BootstrapからJavaScriptを読み込むコードをコピーして貼り付け-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </body>
 </html>
