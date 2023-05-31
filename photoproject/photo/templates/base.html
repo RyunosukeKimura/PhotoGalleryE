@@ -59,9 +59,18 @@
           {% comment %} <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p> {% endcomment %}
           <ul class="list-unstyled">
             <!-- ナビゲーションメニュー-->
-            <li><a href="{% url 'account:signup' %}" class="text-white">サインアップ</a></li>
-            <li><a href="#" class="text-white">ログイン</a></li>
+            {% if user.is_authenicated %}
+            <!-- ログイン中のメニュー-->
+            <li><a href="#" class="text-white">マイページ</a></li>
+            <li><a href="{% url 'accounts:logout' %}" class="text-white">ログアウト</a></li>
+            <li><a href="#" class="text-white">パスワードのリセット</a></li>
             <li><a href="mailto:Aoi_Katagiri@totec.co.jp" class="text-white">Email me</a></li>
+            {% else %}
+            <!-- ログイン状態でない場合のメニュー-->
+            <li><a href="{% url 'accounts:signup' %}" class="text-white">サインアップ</a></li>
+            <li><a href="{% url 'accounts:login' %}" class="text-white">ログイン</a></li>
+            <li><a href="mailto:Aoi_Katagiri@totec.co.jp" class="text-white">Email me</a></li>
+            {% endif %}
           </ul>
         </div>
       </div>
