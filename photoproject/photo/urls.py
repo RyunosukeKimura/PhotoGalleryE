@@ -8,4 +8,8 @@ app_name = 'photo'
 urlpatterns = [
     # photoアプリへのアクセスはviewsモジュールのIndexViewを実行
     path('', views.IndexView.as_view(), name='index'),
+
+    # マイページ
+    # mypage/へのアクセスはMypageViewを実行
+    path('mypage/', views.MypageView.as_view(), name = 'mypage'),
 ]
