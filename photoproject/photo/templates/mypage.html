@@ -1,0 +1,13 @@
+<!-- ベーステンプレートを適用する-->
+{% extends 'base.html' %}
+<!-- ヘッダー情報のページタイトルを設定する-->
+{% block title %}Mypage{% endblock %}
+
+{% block contents %}
+
+<!-- タイトルテンプレートは組み込まない-->
+
+<!-- ユーザーの投稿件数を表示-->
+{% if user.is_authenticated %}
+    <br>
+    <div style="text-align:center">
